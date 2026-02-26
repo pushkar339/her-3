@@ -142,6 +142,7 @@
     }
 
     #continueNewMessageBtn {
+      display: none;
       font-family: 'Nunito', sans-serif;
       font-size: 20px;
       font-weight: 700;
@@ -153,6 +154,8 @@
       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
       cursor: pointer;
       transition: all 0.3s ease;
+      opacity: 0;
+      margin-top: 20px;
     }
 
     #continueNewMessageBtn:hover {
@@ -637,7 +640,7 @@ WON'T READ THEM 😭🥀Anddd uhhhh. I am shifting to Noida AND YOUR HOME IS SO 
 HOW ABOUT UHHH IDK, I leave my number here anddd uhhh you maybe text me on whatsapp or idk wtv BUT I REALLY REALLY HOPE THAT YOU ARE
 DOING GOOODD. I really miss you bruh. At the end here's my number if you ever visit this website again..."7902056138" IF YOU LEAK
 THIS I'LL KILL YOU AND THROW YOU OFF A CLIFF THEN SELL YOUR ORGANS TO A DRUG DEALER.</div>
-    <button id="continueNewMessageBtn" onclick="proceedToChocolate()">CONTINUE</button>
+    <button id="continueNewMessageBtn" onclick="proceedToChocolate()" style="display: none;">CONTINUE</button>
   </div>
 
   <div id="finalText">HEHEHEHEHEHE 😋</div>
@@ -1018,7 +1021,33 @@ THIS I'LL KILL YOU AND THROW YOU OFF A CLIFF THEN SELL YOUR ORGANS TO A DRUG DEA
 
     function toggleNewMessage() {
       const secretMessage = document.getElementById('secretMessage');
-      secretMessage.classList.toggle('show');
+      const continueNewMessageBtn = document.getElementById('continueNewMessageBtn');
+      
+      if (!secretMessage.classList.contains('show')) {
+        // Message is being shown
+        secretMessage.classList.toggle('show');
+        
+        // Show continue button after 2 seconds
+        setTimeout(() => {
+          if (continueNewMessageBtn) {
+            continueNewMessageBtn.style.display = 'block';
+            requestAnimationFrame(() => {
+              continueNewMessageBtn.style.opacity = '1';
+            });
+          }
+        }, 2000);
+      } else {
+        // Message is being hidden
+        secretMessage.classList.toggle('show');
+        
+        // Hide continue button
+        if (continueNewMessageBtn) {
+          continueNewMessageBtn.style.opacity = '0';
+          setTimeout(() => {
+            continueNewMessageBtn.style.display = 'none';
+          }, 300);
+        }
+      }
     }
 
     function proceedToChocolate() {
