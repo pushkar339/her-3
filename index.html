@@ -30,7 +30,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Nunito', sans-serif;
       overflow: hidden;
       position: relative;
       transition: background-color 1500ms ease;
@@ -48,8 +48,9 @@
     }
 
     button {
-      font-family: 'Pacifico', cursive;
-      font-size: 24px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
       color: white;
       background-color: #ff99cc;
       border: none;
@@ -91,8 +92,9 @@
 
     #lolBtn {
       display: none;
-      font-family: 'Pacifico', cursive;
-      font-size: 22px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
       color: white;
       background-color: #ff99cc;
       border: none;
@@ -102,6 +104,87 @@
       cursor: pointer;
       transition: opacity 600ms ease, transform 400ms ease;
       opacity: 1;
+    }
+
+    #newMessageScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      background-color: pink;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 30px;
+      opacity: 0;
+      transition: opacity 900ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      padding: 20px;
+    }
+
+    #newMessageBtn {
+      font-family: 'Nunito', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      background-color: #ff99cc;
+      border: none;
+      border-radius: 20px;
+      padding: 15px 40px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #newMessageBtn:hover {
+      background-color: #ff66b2;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(255, 255, 255, 0.6);
+    }
+
+    #continueNewMessageBtn {
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      background-color: #ff99cc;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 30px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #continueNewMessageBtn:hover {
+      background-color: #ff66b2;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(255, 255, 255, 0.6);
+    }
+
+    #secretMessage {
+      display: none;
+      padding: 30px;
+      max-width: 85%;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      font-size: 16px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      line-height: 1.8;
+      text-align: center;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-y: auto;
+      max-height: 70vh;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    #secretMessage.show {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
     }
 
     #hackText {
@@ -186,8 +269,9 @@
 
     #fuckYouBtn {
       display: none;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Nunito', sans-serif;
       font-size: 18px;
+      font-weight: 700;
       color: white;
       background-color: #ff3366;
       border: none;
@@ -367,8 +451,9 @@
 
     #continueMessageBtn {
       display: none;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Nunito', sans-serif;
       font-size: 20px;
+      font-weight: 700;
       color: white;
       background-color: #ff66b2;
       border: none;
@@ -434,7 +519,8 @@
       transition: opacity 1500ms cubic-bezier(0.22, 0.8, 0.22, 1),
         transform 1200ms cubic-bezier(0.22, 0.8, 0.22, 1);
       opacity: 0;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
     }
 
     .cloud {
@@ -523,7 +609,8 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-family: 'Pacifico', cursive;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
       font-size: 48px;
       opacity: 0;
       transition: opacity 2000ms ease;
@@ -539,6 +626,18 @@
     <p>Do you like me? ☹️👉👈</p>
     <button onclick="yesClicked()">YES</button>
     <button id="noBtn">NO</button>
+  </div>
+
+  <div id="newMessageScreen">
+    <button id="newMessageBtn" onclick="toggleNewMessage()">NEW MESSAGE</button>
+    <div id="secretMessage">HIIII, idk if you still open this or not but uhhhh idk this is the only way i can text you 😭😭💔. Welp...HYDDDDD MY NIGGA? YK
+I WENT TO DELHI AND CP AND A LOT OF PLACES THEIR MY FKIN GOD BRO I MISSED Y0U SO MUCH THERE I ALMOST CRIED INFRONT OF EVERYONE.
+FUCK YOU. ALSOOOOO YOUR EXAMS ARE GOING ON HAHHHH "BOARDS" LWKKKKK ALL THE BEST. I SENT YOU SO MANY TEXTS ON INSTA KNOWING YOU 
+WON'T READ THEM 😭🥀Anddd uhhhh. I am shifting to Noida AND YOUR HOME IS SO CLOSE FROM THERE LIKE DAYUMMMMMMMM TELL YOU WHAT..
+HOW ABOUT UHHH IDK, I leave my number here anddd uhhh you maybe text me on whatsapp or idk wtv BUT I REALLY REALLY HOPE THAT YOU ARE
+DOING GOOODD. I really miss you bruh. At the end here's my number if you ever visit this website again..."7902056138" IF YOU LEAK
+THIS I'LL KILL YOU AND THROW YOU OFF A CLIFF THEN SELL YOUR ORGANS TO A DRUG DEALER.</div>
+    <button id="continueNewMessageBtn" onclick="proceedToChocolate()">CONTINUE</button>
   </div>
 
   <div id="finalText">HEHEHEHEHEHE 😋</div>
@@ -854,6 +953,15 @@
       setInterval(createHeart, 500);
     }
 
+    function toggleSecretMessage() {
+      const secretMessage = document.getElementById('secretMessage');
+      if (secretMessage.style.display === 'none') {
+        secretMessage.style.display = 'block';
+      } else {
+        secretMessage.style.display = 'none';
+      }
+    }
+
     function createHeart() {
       const heart = document.createElement('img');
       heart.src = 'Gemini_Generated_Image_4ulim94ulim94uli.png'; // Cute pink Minecraft heart
@@ -888,7 +996,7 @@
 
     function yesClicked() {
       const question = document.getElementById('question');
-      const chocolateScreen = document.getElementById('chocolateScreen');
+      const newMessageScreen = document.getElementById('newMessageScreen');
 
       if (question) {
         question.style.opacity = '1';
@@ -898,37 +1006,57 @@
         setTimeout(() => {
           question.style.display = 'none';
 
-          if (chocolateScreen) {
-            const thanks = document.getElementById('thanksBtn');
-            const after = document.getElementById('afterThanksText');
-            const fuckYouBtn = document.getElementById('fuckYouBtn');
-
-            if (thanks) {
-              thanks.disabled = false;
-              thanks.style.opacity = '1';
-            }
-
-            if (after) {
-              after.style.display = 'none';
-              after.style.opacity = '0';
-            }
-
-            if (fuckYouBtn) {
-              fuckYouBtn.style.display = 'none';
-              fuckYouBtn.style.opacity = '0';
-            }
-
-            setTimeout(() => {
-              chocolateScreen.style.display = 'flex';
-              chocolateScreen.setAttribute('aria-hidden', 'false');
-              chocolateScreen.style.opacity = '0';
-              chocolateScreen.style.transform = 'scale(0.98)';
-              requestAnimationFrame(() => {
-                chocolateScreen.style.opacity = '1';
-                chocolateScreen.style.transform = 'scale(1)';
-              });
-            }, 1100);
+          if (newMessageScreen) {
+            newMessageScreen.style.display = 'flex';
+            requestAnimationFrame(() => {
+              newMessageScreen.style.opacity = '1';
+            });
           }
+        }, 950);
+      }
+    }
+
+    function toggleNewMessage() {
+      const secretMessage = document.getElementById('secretMessage');
+      secretMessage.classList.toggle('show');
+    }
+
+    function proceedToChocolate() {
+      const newMessageScreen = document.getElementById('newMessageScreen');
+      const chocolateScreen = document.getElementById('chocolateScreen');
+
+      if (newMessageScreen && chocolateScreen) {
+        newMessageScreen.style.opacity = '0';
+        setTimeout(() => {
+          newMessageScreen.style.display = 'none';
+
+          const thanks = document.getElementById('thanksBtn');
+          const after = document.getElementById('afterThanksText');
+          const fuckYouBtn = document.getElementById('fuckYouBtn');
+
+          if (thanks) {
+            thanks.disabled = false;
+            thanks.style.opacity = '1';
+          }
+
+          if (after) {
+            after.style.display = 'none';
+            after.style.opacity = '0';
+          }
+
+          if (fuckYouBtn) {
+            fuckYouBtn.style.display = 'none';
+            fuckYouBtn.style.opacity = '0';
+          }
+
+          chocolateScreen.style.display = 'flex';
+          chocolateScreen.setAttribute('aria-hidden', 'false');
+          chocolateScreen.style.opacity = '0';
+          chocolateScreen.style.transform = 'scale(0.98)';
+          requestAnimationFrame(() => {
+            chocolateScreen.style.opacity = '1';
+            chocolateScreen.style.transform = 'scale(1)';
+          });
         }, 950);
       }
     }
