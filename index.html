@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Screen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EN4SRB228"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0EN4SRB228');
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: pink;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      overflow: hidden;
+      position: relative;
+      transition: background-color 1500ms ease;
+    }
+
+    body.black-bg {
+      background-color: black;
+    }
+
+    h1 {
+      font-size: 48px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+      margin-bottom: 30px;
+    }
+
+    button {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      color: white;
+      background-color: #ff99cc;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 30px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #ff66b2;
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(255, 255, 255, 0.6);
+    }
+
+    #noBtn {
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #question,
+    #finalText {
+      display: none;
+      text-align: center;
+      font-size: 32px;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.4);
+      position: relative;
+      z-index: 2;
+      opacity: 1;
+      transition: opacity 900ms cubic-bezier(0.22, 0.8, 0.22, 1), transform 700ms cubic-bezier(0.22, 0.8, 0.22, 1);
+    }
+
+    #question {
+      opacity: 1;
+    }
+
+    #lolBtn {
+      display: none;
+      font-family: 'Pacifico', cursive;
+      font-size: 22px;
+      color: white;
+      background-color: #ff99cc;
+      border: none;
+      border-radius: 18px;
+      padding: 10px 22px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: opacity 600ms ease, transform 400ms ease;
+      opacity: 1;
+    }
+
+    #hackText {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      text-align: center;
+      font-size: 40px;
+      text-shadow: none;
+      opacity: 1;
+      transition: opacity 1000ms cubic-bezier(0.22, 0.8, 0.22, 1),
+        transform 1000ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      z-index: 4;
+      font-weight: 700;
+      will-change: opacity, transform;
+    }
+
+    /* PINK SCREENS ONLY */
+    #favScreen,
+    #chocolateScreen,
+    #nightScreen,
+    #dayScreen,
+    #messageScreen,
+    #finalMessageScreen {
+      background-color: pink !important;
+    }
+
+    #favScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 6;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      font-size: 36px;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 900ms cubic-bezier(0.22, 0.8, 0.22, 1), transform 700ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      font-weight: 700;
+      pointer-events: auto;
+    }
+
+    #chocolateScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 8;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      font-size: 36px;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 900ms cubic-bezier(0.22, 0.8, 0.22, 1), transform 700ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      font-weight: 700;
+      pointer-events: auto;
+    }
+
+    #afterThanksText {
+      display: none;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      max-width: 90%;
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+      transition: opacity 900ms cubic-bezier(0.22, 0.8, 0.22, 1), transform 700ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      line-height: 1.3;
+      z-index: 7;
+    }
+
+    #fuckYouBtn {
+      display: none;
+      font-family: 'Pacifico', cursive;
+      font-size: 18px;
+      color: white;
+      background-color: #ff3366;
+      border: none;
+      border-radius: 15px;
+      padding: 8px 20px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+
+    #fuckYouBtn:hover {
+      background-color: #ff0044;
+      transform: scale(1.05);
+    }
+
+    .heart {
+      position: absolute;
+      top: -50px;
+      pointer-events: none;
+      width: 30px;
+      height: 30px;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ENVELOPE FOLDING ANIMATION */
+    #envelope {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 150px;
+      z-index: 20;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+
+    .envelope-base {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #ffcc00;
+      border-radius: 10px;
+      z-index: 1;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      background: #ffaa00;
+      border-radius: 10px 10px 0 0;
+      z-index: 2;
+      transform-origin: top;
+      transition: transform 1s ease;
+    }
+
+    .envelope-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      z-index: 3;
+      transition: opacity 0.5s ease;
+    }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .envelope-icon {
+      opacity: 0;
+    }
+
+    /* NIGHT SKY WITH REALISTIC STARS */
+    #nightScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 25;
+      background: linear-gradient(to bottom, #0b0c3f, #02040f);
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      color: #cfe8ff;
+      font-size: 28px;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 1200ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      opacity: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.9;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+      transform: translateZ(0);
+      animation: twinkle 3000ms linear infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.4);
+      }
+    }
+
+    /* MESSAGE BOX IN NIGHT SKY */
+    #messageScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      background: rgba(11, 12, 63, 0.85);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      color: #cfe8ff;
+      font-family: 'Comic Neue', cursive;
+      opacity: 0;
+      transition: opacity 1000ms ease;
+    }
+
+    #messageContent {
+      max-width: 80%;
+      max-height: 80%;
+      overflow-y: auto;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(25, 30, 80, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(100, 150, 255, 0.3);
+      font-weight: 700;
+      border: 1px solid rgba(100, 150, 255, 0.2);
+    }
+
+    .message-line {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1200ms ease, transform 1200ms ease;
+      margin-bottom: 15px;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    #continueMessageBtn {
+      display: none;
+      font-family: 'Pacifico', cursive;
+      font-size: 20px;
+      color: white;
+      background-color: #ff66b2;
+      border: none;
+      border-radius: 15px;
+      padding: 10px 25px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    #continueMessageBtn:hover {
+      background-color: #ff3385;
+      transform: translateY(10px) scale(1.05);
+    }
+
+    /* FINAL MESSAGE SCREEN */
+    #finalMessageScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 35;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      opacity: 0;
+      transition: opacity 1000ms ease;
+    }
+
+    .final-message {
+      font-size: 32px;
+      text-align: center;
+      max-width: 80%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1000ms ease, transform 1000ms ease;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
+      line-height: 1.4;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      position: absolute;
+    }
+
+    /* PINK DAY SCENE */
+    #dayScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 15;
+      background: pink;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      text-align: center;
+      padding: 20px;
+      transition: opacity 1500ms cubic-bezier(0.22, 0.8, 0.22, 1),
+        transform 1200ms cubic-bezier(0.22, 0.8, 0.22, 1);
+      opacity: 0;
+      font-family: 'Pacifico', cursive;
+    }
+
+    .cloud {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.9;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+
+    .cloud:before,
+    .cloud:after {
+      content: '';
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .cloud1 {
+      width: 100px;
+      height: 60px;
+      top: 20%;
+      left: 10%;
+      animation: floatCloud 25s linear infinite;
+    }
+
+    .cloud1:before {
+      width: 50px;
+      height: 50px;
+      top: -20px;
+      left: 10px;
+    }
+
+    .cloud1:after {
+      width: 60px;
+      height: 60px;
+      top: -25px;
+      right: 15px;
+    }
+
+    .cloud2 {
+      width: 120px;
+      height: 70px;
+      top: 30%;
+      right: 15%;
+      animation: floatCloud 30s linear infinite reverse;
+    }
+
+    .cloud2:before {
+      width: 60px;
+      height: 60px;
+      top: -25px;
+      left: 15px;
+    }
+
+    .cloud2:after {
+      width: 70px;
+      height: 70px;
+      top: -30px;
+      right: 20px;
+    }
+
+    @keyframes floatCloud {
+      0% {
+        transform: translateX(-100px);
+      }
+
+      100% {
+        transform: translateX(calc(100vw + 100px));
+      }
+    }
+
+    #dayText {
+      font-size: 36px;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+      z-index: 16;
+    }
+
+    /* THE END SCREEN */
+    #theEndScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: black;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: 'Pacifico', cursive;
+      font-size: 48px;
+      opacity: 0;
+      transition: opacity 2000ms ease;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="mainText">HEHE HI</h1>
+  <button id="startBtn" onclick="startScene()">HI</button>
+
+  <div id="question">
+    <p>Do you like me? ☹️👉👈</p>
+    <button onclick="yesClicked()">YES</button>
+    <button id="noBtn">NO</button>
+  </div>
+
+  <div id="finalText">HEHEHEHEHEHE 😋</div>
+  <button id="continueBtn" onclick="continueClicked()" style="display:none;">continue</button>
+  <button id="lolBtn" onclick="lolClicked()" style="display:none;">LOL</button>
+  <div id="hackText">YOUR DEVICE HAS BEEN HACKED</div>
+
+  <!-- Chocolate Screen with "well well well" text -->
+  <div id="chocolateScreen" aria-hidden="true">
+    <div id="chocolateText">HERE'S YOUR FAV THING 🍫</div>
+    <button id="thanksBtn" onclick="thanksClicked()">thanks</button>
+    <div id="afterThanksText" aria-hidden="true"></div>
+    <button id="fuckYouBtn" onclick="fuckYouClicked()">fuck you</button>
+  </div>
+
+  <!-- Night Sky Screen -->
+  <div id="nightScreen" aria-hidden="true"></div>
+
+  <div id="dayScreen" aria-hidden="true">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div id="dayText">AND THEY LIVED HAPPILY EVER AFTER 💕</div>
+  </div>
+
+  <!-- Envelope with Folding Animation -->
+  <div id="envelope" class="envelope" onclick="openEnvelope()">
+    <div class="envelope-base"></div>
+    <div class="envelope-flap"></div>
+    <div class="envelope-icon">💌</div>
+  </div>
+
+  <!-- Message Screen -->
+  <div id="messageScreen">
+    <div id="messageContent"></div>
+    <button id="continueMessageBtn" onclick="continueMessageClicked()">continue</button>
+  </div>
+
+  <!-- Final Message Screen -->
+  <div id="finalMessageScreen">
+    <div id="finalMessage1" class="final-message"></div>
+    <div id="finalMessage2" class="final-message"></div>
+    <div id="finalMessage3" class="final-message"></div>
+    <div id="finalMessage4" class="final-message"></div>
+  </div>
+
+  <!-- The End Screen -->
+  <div id="theEndScreen">THE END</div>
+
+  <!-- ONLINE MUSIC & HEART -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    let noButtonMoved = false;
+
+    function thanksClicked() {
+      const btn = document.getElementById('thanksBtn');
+      const after = document.getElementById('afterThanksText');
+      const fuckYouBtn = document.getElementById('fuckYouBtn');
+
+      if (!btn || !after || !fuckYouBtn) return;
+
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      after.textContent = "WELL WELL WELL, LOOK AT HER EATING A VIRTUAL CHOCOLATE HAHAHAHA";
+      after.style.display = 'block';
+      after.style.opacity = '0';
+      after.style.transform = 'translateY(6px) scale(0.98)';
+
+      requestAnimationFrame(() => {
+        after.style.opacity = '1';
+        after.style.transform = 'translateY(0) scale(1)';
+        after.setAttribute('aria-hidden', 'false');
+
+        setTimeout(() => {
+          fuckYouBtn.style.display = 'block';
+          fuckYouBtn.style.opacity = '0';
+          requestAnimationFrame(() => {
+            fuckYouBtn.style.opacity = '1';
+          });
+        }, 1000);
+      });
+    }
+
+    function fuckYouClicked() {
+      const fuckYouBtn = document.getElementById('fuckYouBtn');
+      const envelope = document.getElementById('envelope');
+      const chocolateScreen = document.getElementById('chocolateScreen');
+
+      if (!fuckYouBtn || !envelope || !chocolateScreen) return;
+
+      fuckYouBtn.style.opacity = '0';
+      setTimeout(() => {
+        fuckYouBtn.style.display = 'none';
+
+        chocolateScreen.style.opacity = '0';
+        chocolateScreen.style.transform = 'scale(0.98)';
+
+        setTimeout(() => {
+          chocolateScreen.style.display = 'none';
+
+          envelope.style.display = 'block';
+          envelope.style.opacity = '0';
+          envelope.style.transform = 'translate(-50%, -50%) scale(0.5)';
+
+          requestAnimationFrame(() => {
+            envelope.style.opacity = '1';
+            envelope.style.transform = 'translate(-50%, -50%) scale(1)';
+          });
+        }, 500);
+      }, 300);
+    }
+
+    function openEnvelope() {
+      const envelope = document.getElementById('envelope');
+      const nightScreen = document.getElementById('nightScreen');
+
+      if (!envelope || !nightScreen) return;
+
+      envelope.classList.add('open');
+
+      setTimeout(() => {
+        envelope.style.opacity = '0';
+        envelope.style.transform = 'translate(-50%, -50%) scale(0.5)';
+
+        setTimeout(() => {
+          envelope.style.display = 'none';
+
+          nightScreen.style.display = 'flex';
+          requestAnimationFrame(() => {
+            nightScreen.style.opacity = '1';
+
+            generateStars(nightScreen, 300);
+
+            setTimeout(() => {
+              showMessage();
+            }, 1500);
+          });
+        }, 500);
+      }, 1000);
+    }
+
+    function showMessage() {
+      const messageScreen = document.getElementById('messageScreen');
+      const messageContent = document.getElementById('messageContent');
+      const continueMessageBtn = document.getElementById('continueMessageBtn');
+
+      if (!messageScreen || !messageContent) return;
+
+      messageScreen.style.display = 'flex';
+      requestAnimationFrame(() => {
+        messageScreen.style.opacity = '1';
+
+        const messageLines = [
+          "Hehehehe hellow my nigga, SOOOO ive been working on this SPECIAL gift for my VERY SPECIAL GIRL,",
+          "",
+          "i dont even know why i am writing this but uhhhhh YES, soooooo uhhhh 2 months since we've met right?",
+          "",
+          "you are like the BEST thing that has ever happened to me its likeeeee, HOLY FUCK....",
+          "",
+          "i might not know what you look like, sound like or anything abt you. BUT UHHHHHH....",
+          "",
+          "one thing ik is that i love you my nigga its like, my day is incomplete without talking to you.",
+          "",
+          "And honestly, it's crazy how much you've become a part of my thoughts. I catch myself smiling at the dumbest things just because I remembered something you said before wether if its 'GAY' or those random ass insults you throw at me,",
+          "",
+          "I don't even care about the distance or the fact that I barely know you in the 'real world' sense. None of that matters. What matters is how you make me feel, and that's something I can't shake off.",
+          "",
+          "I LOVE like absolutely LOVEEEEEEEEE when you call me 'pushu' do we like each other? maybe..Uhhhh k MAYBE NOT idk buttttttt MWUAH."
+        ];
+
+        messageContent.innerHTML = '';
+
+        messageLines.forEach((line, index) => {
+          setTimeout(() => {
+            const lineElement = document.createElement('div');
+            lineElement.className = 'message-line';
+            lineElement.textContent = line;
+            messageContent.appendChild(lineElement);
+
+            requestAnimationFrame(() => {
+              lineElement.style.opacity = '1';
+              lineElement.style.transform = 'translateY(0)';
+            });
+
+            if (index === messageLines.length - 1) {
+              setTimeout(() => {
+                continueMessageBtn.style.display = 'block';
+                requestAnimationFrame(() => {
+                  continueMessageBtn.style.opacity = '1';
+                  continueMessageBtn.style.transform = 'translateY(0)';
+                });
+              }, 1500);
+            }
+          }, index * 1500);
+        });
+      });
+    }
+
+    function continueMessageClicked() {
+      const messageScreen = document.getElementById('messageScreen');
+      const continueMessageBtn = document.getElementById('continueMessageBtn');
+      const finalMessageScreen = document.getElementById('finalMessageScreen');
+      const finalMessage1 = document.getElementById('finalMessage1');
+      const finalMessage2 = document.getElementById('finalMessage2');
+      const finalMessage3 = document.getElementById('finalMessage3');
+      const finalMessage4 = document.getElementById('finalMessage4');
+      const theEndScreen = document.getElementById('theEndScreen');
+
+      if (!messageScreen || !continueMessageBtn || !finalMessageScreen) return;
+
+      continueMessageBtn.style.opacity = '0';
+      continueMessageBtn.style.transform = 'translateY(10px)';
+
+      setTimeout(() => {
+        continueMessageBtn.style.display = 'none';
+
+        messageScreen.style.opacity = '0';
+
+        setTimeout(() => {
+          messageScreen.style.display = 'none';
+
+          finalMessageScreen.style.display = 'flex';
+          requestAnimationFrame(() => {
+            finalMessageScreen.style.opacity = '1';
+
+            setTimeout(() => {
+              finalMessage1.textContent = "How could I ever";
+              requestAnimationFrame(() => {
+                finalMessage1.style.opacity = '1';
+                finalMessage1.style.transform = 'translateY(0)';
+
+                setTimeout(() => {
+                  finalMessage1.style.opacity = '0';
+                  finalMessage1.style.transform = 'translateY(-20px)';
+
+                  setTimeout(() => {
+                    finalMessage2.textContent = "LIKE EVERRRRR let something slip away…";
+                    requestAnimationFrame(() => {
+                      finalMessage2.style.opacity = '1';
+                      finalMessage2.style.transform = 'translateY(0)';
+
+                      setTimeout(() => {
+                        finalMessage2.style.opacity = '0';
+                        finalMessage2.style.transform = 'translateY(-20px)';
+
+                        setTimeout(() => {
+                          finalMessage3.textContent = "something as rare as women like you?";
+                          requestAnimationFrame(() => {
+                            finalMessage3.style.opacity = '1';
+                            finalMessage3.style.transform = 'translateY(0)';
+
+                            setTimeout(() => {
+                              finalMessage3.style.opacity = '0';
+                              finalMessage3.style.transform = 'translateY(-20px)';
+
+                              setTimeout(() => {
+                                finalMessage4.textContent = "K I WILL CRY NOW IF WRITE MORE SO BBYE HEHE";
+                                requestAnimationFrame(() => {
+                                  finalMessage4.style.opacity = '1';
+                                  finalMessage4.style.transform = 'translateY(0)';
+
+                                  setTimeout(() => {
+                                    finalMessage4.style.opacity = '0';
+                                    finalMessage4.style.transform = 'translateY(-20px)';
+
+                                    setTimeout(() => {
+                                      finalMessageScreen.style.opacity = '0';
+
+                                      setTimeout(() => {
+                                        finalMessageScreen.style.display = 'none';
+
+                                        theEndScreen.style.display = 'flex';
+                                        document.body.classList.add('black-bg');
+
+                                        requestAnimationFrame(() => {
+                                          theEndScreen.style.opacity = '1';
+                                        });
+                                      }, 1000);
+                                    }, 1000);
+                                  }, 3000);
+                                });
+                              }, 2000);
+                            }, 4000);
+                          });
+                        }, 2000);
+                      }, 4000);
+                    });
+                  }, 2000);
+                }, 4000);
+              });
+            }, 2000);
+          });
+        }, 500);
+      }, 300);
+    }
+
+    function startScene() {
+      music.volume = 0.4;
+      music.play().catch(e => console.log("Audio play failed:", e));
+      document.getElementById('mainText').style.display = 'none';
+      document.getElementById('startBtn').style.display = 'none';
+      document.getElementById('question').style.display = 'block';
+
+      const noBtn = document.getElementById('noBtn');
+      noBtn.addEventListener('mouseover', moveNoButton);
+      noBtn.addEventListener('click', moveNoButton);
+
+      setInterval(createHeart, 500);
+    }
+
+    function createHeart() {
+      const heart = document.createElement('img');
+      heart.src = 'Gemini_Generated_Image_4ulim94ulim94uli.png'; // Cute pink Minecraft heart
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    function moveNoButton() {
+      if (noButtonMoved) return;
+
+      const noBtn = document.getElementById('noBtn');
+      noButtonMoved = true;
+
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+      noBtn.style.transform = 'scale(1.1)';
+
+      setTimeout(() => {
+        noBtn.style.transform = 'scale(1)';
+        noButtonMoved = false;
+      }, 500);
+    }
+
+    function yesClicked() {
+      const question = document.getElementById('question');
+      const chocolateScreen = document.getElementById('chocolateScreen');
+
+      if (question) {
+        question.style.opacity = '1';
+        question.style.transition = 'opacity 900ms cubic-bezier(0.22,0.8,0.22,1)';
+        requestAnimationFrame(() => { question.style.opacity = '0'; });
+
+        setTimeout(() => {
+          question.style.display = 'none';
+
+          if (chocolateScreen) {
+            const thanks = document.getElementById('thanksBtn');
+            const after = document.getElementById('afterThanksText');
+            const fuckYouBtn = document.getElementById('fuckYouBtn');
+
+            if (thanks) {
+              thanks.disabled = false;
+              thanks.style.opacity = '1';
+            }
+
+            if (after) {
+              after.style.display = 'none';
+              after.style.opacity = '0';
+            }
+
+            if (fuckYouBtn) {
+              fuckYouBtn.style.display = 'none';
+              fuckYouBtn.style.opacity = '0';
+            }
+
+            setTimeout(() => {
+              chocolateScreen.style.display = 'flex';
+              chocolateScreen.setAttribute('aria-hidden', 'false');
+              chocolateScreen.style.opacity = '0';
+              chocolateScreen.style.transform = 'scale(0.98)';
+              requestAnimationFrame(() => {
+                chocolateScreen.style.opacity = '1';
+                chocolateScreen.style.transform = 'scale(1)';
+              });
+            }, 1100);
+          }
+        }, 950);
+      }
+    }
+
+    function noClicked() {
+      document.getElementById('question').style.display = 'none';
+      const hackText = document.getElementById('hackText');
+      const chocolateScreen = document.getElementById('chocolateScreen');
+
+      hackText.style.display = 'block';
+      hackText.style.opacity = '1';
+      hackText.style.transform = 'translate(-50%, -50%) scale(1)';
+      hackText.style.fontSize = '48px';
+      hackText.style.color = 'red';
+
+      setTimeout(() => {
+        setTimeout(() => {
+          hackText.textContent = 'HEHE JUST KIDDING';
+          hackText.style.color = 'white';
+          setTimeout(() => {
+            hackText.style.opacity = '0';
+            hackText.style.transform = 'translate(-50%, -50%) scale(0.96)';
+          }, 1400);
+          const afterFade = 1400 + 1000;
+          setTimeout(() => {
+            hackText.style.display = 'none';
+            chocolateScreen.style.display = 'flex';
+            chocolateScreen.setAttribute('aria-hidden', 'false');
+            chocolateScreen.style.opacity = '0';
+            chocolateScreen.style.transform = 'scale(0.98)';
+            requestAnimationFrame(() => {
+              chocolateScreen.style.opacity = '1';
+              chocolateScreen.style.transform = 'scale(1)';
+            });
+          }, afterFade);
+        }, 300);
+      }, 4500);
+    }
+
+    function generateStars(container, count) {
+      container.querySelectorAll('.star').forEach(s => s.remove());
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const size = 1 + Math.random() * 2;
+        const dur = 2000 + Math.random() * 3000;
+        const delay = Math.random() * 2000;
+        s.style.left = left + 'vw';
+        s.style.top = top + 'vh';
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.opacity = 0.6 + Math.random() * 0.4;
+        s.style.animationDuration = dur + 'ms';
+        s.style.animationDelay = delay + 'ms';
+        container.appendChild(s);
+      }
+    }
+  </script>
+</body>
+
+</html>
